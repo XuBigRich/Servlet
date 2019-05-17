@@ -12,7 +12,9 @@
 <body>
 <center>
 <h2>我的联系人</h2>
+    <a href="com?cmd=pieservlet">统计画图</a>
 	<a href="upload.jsp">上传文件</a>
+	<a href="com?cmd=allfile">文件列表</a>
 <a href="com?cmd=beforeAdd">添加联系人</a>
 <a href="exit.jsp">退出登录</a>
 <br><br>

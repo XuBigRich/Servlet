@@ -1,6 +1,8 @@
 package cont;
 
+import Server.download.Download;
 import Server.login.loginServer;
+import Server.statistics.PieServer;
 import Server.upload.UploadServer;
 import dao.Dao;
 import tools.PageBean;
@@ -21,6 +23,9 @@ public class ComServlet extends HttpServlet {
 		else if(cmd.equals("beforeUpdate"))beforeUpdate(request,response);
 		else if(cmd.equals("delContact"))delContact(request,response);
 		else if(cmd.equals("allContact"))allContact(request,response);
+		else if(cmd.equals("allfile"))Download.allFiles(request,response);
+		else if(cmd.equals("download"))Download.download(request,response);
+        else if(cmd.equals("pieservlet"))PieServer.paint(request,response);
 	}
 	//É¾³ýÁªÏµÈË
 	public void delContact(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
