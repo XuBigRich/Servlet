@@ -60,7 +60,7 @@
 	<th>类别</th>
 	<th>操作</th>
 </tr>
-<c:forEach items="${pb.data}" var="c">
+<c:forEach items="${pb.show}" var="c">
 	<tr>
 		<td>${c.cnam }</td>
 		<td>${c.sex=='m'?'男':'女' }</td>

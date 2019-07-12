@@ -25,38 +25,38 @@ import org.jfree.data.xy.XYSeriesCollection;
 public class PieServer {
 	public static void paint(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		try {
-			//é¥¼çŠ¶å›¾
+			//±ı×´Í¼
 //				DefaultPieDataset ds=new DefaultPieDataset();
-//				ds.setValue("è‹¹æœ", 20);
-//				ds.setValue("è¥¿ç“œ", 40);
-//				ds.setValue("æ©˜å­", 12);
-//				ds.setValue("æ¦´è²", 18);
-//				ds.setValue("è‘¡è„", 10);
+//				ds.setValue("Æ»¹û", 20);
+//				ds.setValue("Î÷¹Ï", 40);
+//				ds.setValue("éÙ×Ó", 12);
+//				ds.setValue("ÁñÁ«", 18);
+//				ds.setValue("ÆÏÌÑ", 10);
 //
-//				JFreeChart fc=ChartFactory.createPieChart("å›¾ç¤ºçš„æ ‡é¢˜",ds, true, true, false);
+//				JFreeChart fc=ChartFactory.createPieChart("Í¼Ê¾µÄ±êÌâ",ds, true, true, false);
 
 
-			//ç›´æ–¹å›¾
+			//Ö±·½Í¼
 //			 DefaultCategoryDataset dataset=new DefaultCategoryDataset();
-//		        dataset.setValue(10,"a","ç®¡ç†äººå‘˜");
-//		        dataset.setValue(20,"b","å¸‚åœºäººå‘˜");
-//		        dataset.setValue(40,"c","å¼€å‘äººå‘˜");
-//		        dataset.setValue(15,"d","å…¶ä»–äººå‘˜");
+//		        dataset.setValue(10,"a","¹ÜÀíÈËÔ±");
+//		        dataset.setValue(20,"b","ÊĞ³¡ÈËÔ±");
+//		        dataset.setValue(40,"c","¿ª·¢ÈËÔ±");
+//		        dataset.setValue(15,"d","ÆäËûÈËÔ±");
 //
-//		        JFreeChart fc=ChartFactory.createBarChart("hi", "äººå‘˜åˆ†å¸ƒ", "äººå‘˜æ•°é‡", dataset, PlotOrientation.VERTICAL, true, true, false); //åˆ›å»ºä¸€ä¸ªJFreeChart
-//		        fc.setTitle("æŸå…¬å¸ç»„ç»‡ç»“æ„å›¾");//å¯ä»¥é‡æ–°è®¾ç½®æ ‡é¢˜ï¼Œæ›¿æ¢â€œhiâ€æ ‡é¢˜
+//		        JFreeChart fc=ChartFactory.createBarChart("hi", "ÈËÔ±·Ö²¼", "ÈËÔ±ÊıÁ¿", dataset, PlotOrientation.VERTICAL, true, true, false); //´´½¨Ò»¸öJFreeChart
+//		        fc.setTitle("Ä³¹«Ë¾×éÖ¯½á¹¹Í¼");//¿ÉÒÔÖØĞÂÉèÖÃ±êÌâ£¬Ìæ»»¡°hi¡±±êÌâ
 
 
-			//æŠ˜çº¿å›¾
-			XYSeries xy1 = new XYSeries("æ°¨æ°®å«é‡");
-			XYSeries xy2 = new XYSeries("PHå€¼");
-			XYSeries xy3 = new XYSeries("æ€»ç£·é‡");
-			XYSeries xy4 = new XYSeries("å…¶ä»–");
+			//ÕÛÏßÍ¼
+			XYSeries xy1 = new XYSeries("°±µªº¬Á¿");
+			XYSeries xy2 = new XYSeries("PHÖµ");
+			XYSeries xy3 = new XYSeries("×ÜÁ×Á¿");
+			XYSeries xy4 = new XYSeries("ÆäËû");
 
-			xy1.add(1, 34);
-			xy2.add(1, 4);
-			xy3.add(1, 78);
-			xy4.add(1, 102);
+			xy1.add(1, 39);
+			xy2.add(1, 6);
+			xy3.add(1, 0);
+			xy4.add(1, 2);
 
 			xy1.add(2, 78);
 			xy2.add(2, 9);
@@ -74,7 +74,7 @@ public class PieServer {
 			ds.addSeries(xy3);
 			ds.addSeries(xy4);
 
-			JFreeChart fc = ChartFactory.createXYLineChart("æŠ˜çº¿å›¾", "æ¨ªè½´", "çºµè½´", ds, PlotOrientation.VERTICAL, true, true, false);
+			JFreeChart fc = ChartFactory.createXYLineChart("ÕÛÏßÍ¼", "ºáÖá", "×İÖá", ds, PlotOrientation.VERTICAL, true, true, false);
 
 
 			BufferedImage img = fc.createBufferedImage(600, 400);
@@ -84,7 +84,7 @@ public class PieServer {
 //				g2.setColor(Color.BLUE);
 //				g2.fillRect(0, 0, 80,50);
 //				g2.setColor(Color.WHITE);
-//				g2.setFont(new Font("å®‹ä½“",Font.BOLD,24));
+//				g2.setFont(new Font("ËÎÌå",Font.BOLD,24));
 //				int rnd=(int)(Math.random()*8999+1000);
 //				req.getSession().setAttribute("rnd",rnd);
 //				g2.drawString(rnd+"",25,25);//1000-9999
@@ -104,8 +104,8 @@ public class PieServer {
 //				}
 
 			res.setContentType("image/png;charset=utf-8");
-			ImageIO.write(img, "png", res.getOutputStream());//å‘ç½‘é¡µè¾“å‡ºå›¾ç‰‡
-			/*å¾€å‰ç«¯ä¼ å›¾ç‰‡æˆ‘æœ‰ä¸€ä¸ªå¤§èƒ†çš„æƒ³æ³•ï¼Œå°†BufferedImage è½¬æ¢ä¸ºBase64 */
+			ImageIO.write(img, "png", res.getOutputStream());//ÏòÍøÒ³Êä³öÍ¼Æ¬
+			/*ÍùÇ°¶Ë´«Í¼Æ¬ÎÒÓĞÒ»¸ö´óµ¨µÄÏë·¨£¬½«BufferedImage ×ª»»ÎªBase64 */
 //			req.setAttribute("png",img);
 //			req.getRequestDispatcher("showimg.jsp").forward(req, res);
 		} catch (Exception e) {

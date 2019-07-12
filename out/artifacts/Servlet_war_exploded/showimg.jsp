@@ -13,11 +13,9 @@ function nextImg(){
 </script>
 <body>
 <center>
-	<c:forEach items="${png}" var="c">
 <input name="rnd">
 	<img id="m" src="pie"><a href="#" onclick=nextImg()>看不清楚，换一张</a>
-	<img id="m" src="${c}"><a href="#" onclick=nextImg()>看不清楚，换一张</a>
-	</c:forEach>
+	<img id="s" src="${png}"><a href="#" onclick=nextImg()>看不清楚，换一张</a>
 </center>
 </body>
 </html>

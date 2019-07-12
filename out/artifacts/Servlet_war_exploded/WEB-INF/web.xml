@@ -14,6 +14,7 @@
     <servlet>
         <servlet-name>ComServlet</servlet-name>
         <servlet-class>cont.ComServlet</servlet-class>
+        <load-on-startup>2</load-on-startup>
             <multipart-config/>
        <!-- <multipart-config>
             &lt;!&ndash;fileSizeThreshold = 5_242_880, //5MB&ndash;&gt;
@@ -24,7 +25,7 @@
             <max-file-size>20971520</max-file-size>
             &lt;!&ndash;maxRequestSize设置请求的最大值，如下是一个请求不能超过40MB，文件数据不限&ndash;&gt;
             <max-request-size>41943040</max-request-size>
-        </multipart-config>-->
+        </multipart-config> -->
     </servlet>
 
     <servlet-mapping>
@@ -34,4 +35,38 @@
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
+
+    <servlet>
+        <servlet-name>servletConfigTestConfig</servlet-name>
+        <servlet-class>cont.servletConfigTest</servlet-class>
+        <init-param>
+            <param-name>name</param-name>
+            <param-value>xhz</param-value>
+        </init-param>
+        <init-param>
+            <param-name>address</param-name>
+            <param-value>sanlin</param-value>
+        </init-param>
+        <init-param>
+            <param-name>old</param-name>
+            <param-value>22</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>servletConfigTestConfig</servlet-name>
+        <url-pattern>/sct</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Config</servlet-name>
+        <servlet-class>ServletConfigDemo</servlet-class>
+        <init-param>
+            <param-name>number</param-name>
+            <param-value>111</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Config</servlet-name>
+        <url-pattern>/depend</url-pattern>
+    </servlet-mapping>
 </web-app>

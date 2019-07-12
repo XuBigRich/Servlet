@@ -49,6 +49,7 @@ public class ComServlet extends HttpServlet {
 		List ts=dao.allTypes();//所有类别
 		request.setAttribute("c", c);
 		request.setAttribute("ts", ts);
+		response.setHeader("xhz", "XXX");
 		request.getRequestDispatcher("updatecontact.jsp").forward(request, response);
 	}
 	
@@ -64,9 +65,10 @@ public class ComServlet extends HttpServlet {
 			p=Integer.parseInt(request.getParameter("p"));
 		}
 		PageBean pb=new PageBean();//pagesize默认=5
+		pb.setData(cs);//设置数据集合
 		pb.setCount(cs.size());//设置记录总条数
 		pb.setP(p);//设置当前待显示的页码
-		pb.setData(cs);//设置数据集合
+
 		
 		List ts=dao.allTypes();//查询所有类别
 		
