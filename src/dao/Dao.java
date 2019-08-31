@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Dao {
-	//É¾³ıÁªÏµÈË
+	//åˆ é™¤è”ç³»äºº
 	public void delContact(int cid){
 		Connection con=ConFactory.getCon();
 		String sql="delete contact where cid="+cid;
@@ -23,7 +23,7 @@ public class Dao {
 			ConFactory.close(con);
 		}
 	}
-	//Ìí¼ÓÁªÏµÈË
+	//æ·»åŠ è”ç³»äºº
 	public void addContact(Contact c){
 		Connection con=ConFactory.getCon();
 		String sql="insert into contact values(?,?,?,?,?,?)";
@@ -42,7 +42,7 @@ public class Dao {
 			ConFactory.close(con);
 		}
 	}
-	//ĞŞ¸ÄÁªÏµÈË
+	//ä¿®æ”¹è”ç³»äºº
 	public void updateContact(Contact c){
 		Connection con=ConFactory.getCon();
 		String sql="update contact set cnam=?,sex=?,birth=?,tel=?,tid=? where cid=?";
@@ -61,7 +61,7 @@ public class Dao {
 			ConFactory.close(con);
 		}
 	}
-	//¸ù¾İID²éÑ¯ÁªÏµÈË
+	//æ ¹æ®IDæŸ¥è¯¢è”ç³»äºº
 	public Contact findContact(int cid){
 		Contact c=new Contact();
 		Connection con=ConFactory.getCon();
@@ -83,7 +83,7 @@ public class Dao {
 		}
 		return c;
 	}
-	//²éÑ¯ËùÓĞÀà±ğ
+	//æŸ¥è¯¢æ‰€æœ‰ç±»åˆ«
 	public List allTypes(){
 		List ts=new ArrayList();
 		Connection con=ConFactory.getCon();
@@ -103,7 +103,7 @@ public class Dao {
 		}
 		return ts;
 	}
-	//¶àÌõ¼şÈÎÒâ×éºÏÄ£ºı²éÑ¯
+	//å¤šæ¡ä»¶ä»»æ„ç»„åˆæ¨¡ç³ŠæŸ¥è¯¢
 	public List findContact(Contact c){
 		List cs=new ArrayList();
 		Connection con=ConFactory.getCon();
@@ -143,7 +143,7 @@ public class Dao {
 		}
 		return cs;
 	}
-	//²éÑ¯µ±Ç°µÇÂ¼ÕßµÄËùÓĞÁªÏµÈË²¢·ÖÒ³
+	//æŸ¥è¯¢å½“å‰ç™»å½•è€…çš„æ‰€æœ‰è”ç³»äººå¹¶åˆ†é¡µ
 	public List allContact(int sid){
 		List cs=new ArrayList();
 		Connection con=ConFactory.getCon();
@@ -169,7 +169,7 @@ public class Dao {
 		}
 		return cs;
 	}
-	//µÇÂ¼
+	//ç™»å½•
 	public Users login(Users u){
 		Users us=new Users();
 		Connection con=ConFactory.getCon();
@@ -178,7 +178,7 @@ public class Dao {
 			PreparedStatement ps=con.prepareStatement(sql);
 			ps.setString(1,u.getNam());
 			ps.setString(2,u.getPwd());
-			ResultSet rs=ps.executeQuery();//ÒªÃ´ÓĞ¼ÇÂ¼£¬ÒªÃ´Ã»¼ÇÂ¼
+			ResultSet rs=ps.executeQuery();//è¦ä¹ˆæœ‰è®°å½•ï¼Œè¦ä¹ˆæ²¡è®°å½•
 			rs.next();
 			us.setSid(rs.getInt("sid"));
 			us.setNam(rs.getString("nam"));

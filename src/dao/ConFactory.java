@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class ConFactory {
-	//获取连接
+	//鑾峰彇杩炴帴
 	public static Connection getCon(){
 		Connection con=null;
 		try {
@@ -16,7 +16,7 @@ public class ConFactory {
 		}
 		return con;
 	}
-	//关闭连接
+	//鍏抽棴杩炴帴
 	public static void close(Connection con){
 		try {
 			con.close();
