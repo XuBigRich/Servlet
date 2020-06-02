@@ -15,52 +15,52 @@ import java.util.Iterator;
  * @version 1.0.0
  * @ClassName uploadServer.java
  * @Description TODO
- * @createTime 2019Äê05ÔÂ06ÈÕ 18:43:00
+ * @createTime 2019å¹´05æœˆ06æ—¥ 18:43:00
  */
 public class UploadServer {
-    //ÉÏ´«
+    //ä¸Šä¼ 
     public static void uploadServletfindContact(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        //´æ´¢Â·¾¶
+        //å­˜å‚¨è·¯å¾„
         String savePath=request.getServletContext().getRealPath("/WEB-INF/uploadFile");
-        //»ñÈ¡ÉÏ´«µÄÎÄ¼ş¼¯ºÏ
+        //è·å–ä¸Šä¼ çš„æ–‡ä»¶é›†åˆ
         Collection<Part> parts = request.getParts();
         if(parts.size()==1){
-            /*Servlet3.0½«multipart/form-dataµÄPOSTÇëÇó·â×°³ÉPart£¬Í¨¹ıPart¶ÔÉÏ´«µÄÎÄ¼ş½øĞĞ²Ù×÷¡£*/
-            //Servlet3.0½«multipart/form-dataµÄPOSTÇëÇó·â×°³ÉPart£¬Í¨¹ıPart¶ÔÉÏ´«µÄÎÄ¼ş½øĞĞ²Ù×÷¡£
-            //Part part = parts[0];//´ÓÉÏ´«µÄÎÄ¼ş¼¯ºÏÖĞ»ñÈ¡Part¶ÔÏó
-            System.out.println("=====================================Êä³örequestµÄÇëÇóÍ·");
+            /*Servlet3.0å°†multipart/form-dataçš„POSTè¯·æ±‚å°è£…æˆPartï¼Œé€šè¿‡Partå¯¹ä¸Šä¼ çš„æ–‡ä»¶è¿›è¡Œæ“ä½œã€‚*/
+            //Servlet3.0å°†multipart/form-dataçš„POSTè¯·æ±‚å°è£…æˆPartï¼Œé€šè¿‡Partå¯¹ä¸Šä¼ çš„æ–‡ä»¶è¿›è¡Œæ“ä½œã€‚
+            //Part part = parts[0];//ä»ä¸Šä¼ çš„æ–‡ä»¶é›†åˆä¸­è·å–Partå¯¹è±¡
+            System.out.println("=====================================è¾“å‡ºrequestçš„è¯·æ±‚å¤´");
             Enumeration HeaderName=request.getHeaderNames();
             while(HeaderName.hasMoreElements()){
                 System.out.println(HeaderName.nextElement());
             }
             System.out.println("=====================================");
-            System.out.println("Êä³öPart£¨nameÎªfileµÄ£©£¨requestÇëÇóµÄÇëÇóÌå£©µÄÇëÇóÍ·");
+            System.out.println("è¾“å‡ºPartï¼ˆnameä¸ºfileçš„ï¼‰ï¼ˆrequestè¯·æ±‚çš„è¯·æ±‚ä½“ï¼‰çš„è¯·æ±‚å¤´");
             System.out.println("=====================================");
-            Part part=request.getPart("file");//Í¨¹ı±íµ¥file¿Ø¼ş(<input type="file" name="file">)µÄÃû×ÖÖ±½Ó»ñÈ¡Part¶ÔÏó
+            Part part=request.getPart("file");//é€šè¿‡è¡¨å•fileæ§ä»¶(<input type="file" name="file">)çš„åå­—ç›´æ¥è·å–Partå¯¹è±¡
             Collection<String> nameHeader=part.getHeaderNames();
             Iterator iterator=nameHeader.iterator();
             while(iterator.hasNext()){
                 System.out.println(iterator.next());
             }
             System.out.println("=====================================");
-            System.out.println("Êä³örequestÇëÇóÌåµÄÇëÇóÍ·Îªcontent-dispositionµÄ ÄÚÈİ");
+            System.out.println("è¾“å‡ºrequestè¯·æ±‚ä½“çš„è¯·æ±‚å¤´ä¸ºcontent-dispositionçš„ å†…å®¹");
             System.out.println("=====================================");
-            //Servlet3Ã»ÓĞÌá¹©Ö±½Ó»ñÈ¡ÎÄ¼şÃûµÄ·½·¨,ĞèÒª´ÓÇëÇóÍ·ÖĞ½âÎö³öÀ´
-            //»ñÈ¡ÇëÇóÍ·£¬ÇëÇóÍ·µÄ¸ñÊ½£ºform-data; name="file"; filename="snmp4j--api.zip"
+            //Servlet3æ²¡æœ‰æä¾›ç›´æ¥è·å–æ–‡ä»¶åçš„æ–¹æ³•,éœ€è¦ä»è¯·æ±‚å¤´ä¸­è§£æå‡ºæ¥
+            //è·å–è¯·æ±‚å¤´ï¼Œè¯·æ±‚å¤´çš„æ ¼å¼ï¼šform-data; name="file"; filename="snmp4j--api.zip"
             String header = part.getHeader("content-disposition");
-            //»ñÈ¡ÎÄ¼şÃû
+            //è·å–æ–‡ä»¶å
             String fileName = getFileName(header);
             part.write(savePath+File.separator+fileName);
         }else {
             System.out.println("=====================================");
-            System.out.println("PartµÄËùÓĞÇëÇóÍ·");
+            System.out.println("Partçš„æ‰€æœ‰è¯·æ±‚å¤´");
             System.out.println("=====================================");
             Collection<Part> parts1=request.getParts();
             for(Part part:parts1){
                 System.out.println(part.getName());
                 if(part.getName().equals("file")){
                     String header = part.getHeader("content-disposition");
-                    //»ñÈ¡ÎÄ¼şÃû
+                    //è·å–æ–‡ä»¶å
                     String fileName = getFileName(header);
                     part.write(savePath+File.separator+fileName);
                 }
@@ -68,30 +68,30 @@ public class UploadServer {
         }
     }
     /*
-     *  ¸ù¾İÇëÇóÍ·½âÎö³öÎÄ¼şÃû
-     * ÇëÇóÍ·µÄ¸ñÊ½£º»ğºüºÍgoogleä¯ÀÀÆ÷ÏÂ£ºform-data; name="file"; filename="snmp4j--api.zip"
-     *                 IEä¯ÀÀÆ÷ÏÂ£ºform-data; name="file"; filename="E:\snmp4j--api.zip"
-     * @param header ÇëÇóÍ·
-     * @return ÎÄ¼şÃû
+     *  æ ¹æ®è¯·æ±‚å¤´è§£æå‡ºæ–‡ä»¶å
+     * è¯·æ±‚å¤´çš„æ ¼å¼ï¼šç«ç‹å’Œgoogleæµè§ˆå™¨ä¸‹ï¼šform-data; name="file"; filename="snmp4j--api.zip"
+     *                 IEæµè§ˆå™¨ä¸‹ï¼šform-data; name="file"; filename="E:\snmp4j--api.zip"
+     * @param header è¯·æ±‚å¤´
+     * @return æ–‡ä»¶å
      **/
     public static String getFileName(String header){
         System.out.println("=====================================");
         System.out.println(header);
         /*
-         * String[] tempArr1 = header.split(";");´úÂëÖ´ĞĞÍêÖ®ºó£¬ÔÚ²»Í¬µÄä¯ÀÀÆ÷ÏÂ£¬tempArr1Êı×éÀïÃæµÄÄÚÈİÉÔÓĞÇø±ğ
-         * »ğºü»òÕßgoogleä¯ÀÀÆ÷ÏÂ£ºtempArr1={form-data,name="file",filename="snmp4j--api.zip"}
-         * IEä¯ÀÀÆ÷ÏÂ£ºtempArr1={form-data,name="file",filename="E:\snmp4j--api.zip"}
+         * String[] tempArr1 = header.split(";");ä»£ç æ‰§è¡Œå®Œä¹‹åï¼Œåœ¨ä¸åŒçš„æµè§ˆå™¨ä¸‹ï¼ŒtempArr1æ•°ç»„é‡Œé¢çš„å†…å®¹ç¨æœ‰åŒºåˆ«
+         * ç«ç‹æˆ–è€…googleæµè§ˆå™¨ä¸‹ï¼štempArr1={form-data,name="file",filename="snmp4j--api.zip"}
+         * IEæµè§ˆå™¨ä¸‹ï¼štempArr1={form-data,name="file",filename="E:\snmp4j--api.zip"}
          */
         String [] tempArr1=header.split(";");
         /*
-         *»ğºü»òÕßgoogleä¯ÀÀÆ÷ÏÂ£ºtempArr2={filename,"snmp4j--api.zip"}
-         *IEä¯ÀÀÆ÷ÏÂ£ºtempArr2={filename,"E:\snmp4j--api.zip"}
+         *ç«ç‹æˆ–è€…googleæµè§ˆå™¨ä¸‹ï¼štempArr2={filename,"snmp4j--api.zip"}
+         *IEæµè§ˆå™¨ä¸‹ï¼štempArr2={filename,"E:\snmp4j--api.zip"}
          */
         String[] tempArr2 = tempArr1[2].split("=");
-        //»ñÈ¡ÎÄ¼şÃû£¬¼æÈİ¸÷ÖÖä¯ÀÀÆ÷µÄĞ´·¨
+        //è·å–æ–‡ä»¶åï¼Œå…¼å®¹å„ç§æµè§ˆå™¨çš„å†™æ³•
         String fileName = tempArr2[1].substring(tempArr2[1].lastIndexOf("\\")+1).replaceAll("\"", "");
 
-       /* //´Ë·½·¨Ò²ĞĞs
+       /* //æ­¤æ–¹æ³•ä¹Ÿè¡Œs
             for(String name:tempArr1){
             if(name.contains("filename")){
                 return name.split("=")[1];
