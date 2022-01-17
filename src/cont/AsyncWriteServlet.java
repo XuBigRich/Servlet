@@ -16,7 +16,7 @@ public class AsyncWriteServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        //打印线程名称    （同步非阻塞）  同一个线程 操作，但是不会因为 io操作 阻塞住 后面的处理
         System.out.println("Servlet thread: " + Thread.currentThread().getName());
         AsyncContext asyncCtx = req.startAsync();
         ServletOutputStream os = resp.getOutputStream();
@@ -29,6 +29,7 @@ public class AsyncWriteServlet extends HttpServlet {
             public void onWritePossible() throws IOException {
 
                 int loopCount = 0;
+                //打印线程名称    （同步非阻塞）  同一个线程 操作，但是不会因为 io操作 阻塞住 后面的处理
                 System.out.println("WriteListener thread: " + Thread.currentThread().getName());
                 //判断异步 输出流的状态
                 while (os.isReady()) {

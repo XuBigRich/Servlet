@@ -24,7 +24,7 @@ public class AsyncReadServlet extends HttpServlet {
         PrintWriter out = resp.getWriter();
         out.println("<h1>is Read And Writer page ok</h1>");
         out.flush();
-
+        //打印线程名称    （同步非阻塞）  同一个线程 ，但是不会因为 io操作 阻塞住 后面的处理
         System.out.println("Servlet thread: " + Thread.currentThread().getName());
         AsyncContext asyncCtx = req.startAsync();
         ServletInputStream is = asyncCtx.getRequest().getInputStream();
@@ -33,6 +33,7 @@ public class AsyncReadServlet extends HttpServlet {
 
             @Override
             public void onDataAvailable() {
+                //打印线程名称  （同步非阻塞） 同一个线程 ，但是不会因为 io操作 阻塞住 后面的处理
                 System.out.println("ReadListener thread: " + Thread.currentThread().getName());
 
                 try {
